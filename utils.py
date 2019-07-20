@@ -13,12 +13,17 @@ class PageLoader:
         self.extension = extension
         self.headers = {
         'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36'}
+        # 쿠키 추가하면 됨.
 
+        
     def set_dir_name(self, dir_name):
         self.dir_name = dir_name
 
     def set_parsing_str(self, parsing_str):
         self.parsing_str = parsing_str
+
+    def set_url(self, url):
+        self.url = url
 
     def set_extension(self, extension):
         self.extension = extension
@@ -29,7 +34,7 @@ class PageLoader:
             base_url = url
         else:
             base_url = self.url
-        res = requests.get(base_url)
+        res = requests.get(base_url, headers=self.headers)
         soup = BS(res.text, 'html.parser')
         target_images = soup.select(self.parsing_str)
 
@@ -46,8 +51,6 @@ class PageLoader:
         # dir이름이 존재하는지 boolean으로 알려주는 method
         pass
 
-
-
 class SIS:
     def __init__(self, title='WebToon'):
         self.page_loader = PageLoader(dir_name=title)
@@ -62,12 +65,11 @@ class SIS:
         pass
 
     # N company case
-    def scrap_pages(self, start, end):
+    def scrap_pages(self, ToonModel, start, end):
         os.makedirs(self.title, exist_ok=True)
         os.chdir(self.title)
 
         for i in range(start, end+1):
             self.page_loader.set_dir_name(f'ep{i}')
-            url = f'https://comic.naver.com/webtoon/detail.nhn?titleId=703853&no={i}&weekday=sun'
+            url = ToonModel.page_url(i)
             self.page_loader.scrap_page(url)
-
