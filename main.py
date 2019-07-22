@@ -12,6 +12,7 @@ PINK = NWToon(715159, 'sat')
 MAGICSCROLL = NWToon(655746, 'sun')
 KILLERFOODS = NWToon(720117, 'sun')
 SPERMAN = NWToon(730259, 'sun')
+LAID = NWToon('LAID', 729039, 'mon')
 '''
 
 sys.stdin = open('latest.txt', 'r')
@@ -24,15 +25,16 @@ while True:
         break
 
 new = {
-    'COUNTRIES3': 0,
-    'TOWER': 0,
-    'WINDBREAKER': 0,
-    'COOKGO': 0,
-    'JAMESONHILL': 0,
-    'PINK': 0,
-    'MAGICSCROLL': 0,
-    'KILLERFOODS': 0,
-    'SPERMAN': 0
+    'COUNTRIES3': 124,
+    'TOWER': 439,
+    'WINDBREAKER': 268,
+    'COOKGO': 58,
+    'JAMESONHILL': 184,
+    'PINK': 49,
+    'MAGICSCROLL': 198,
+    'KILLERFOODS': 34,
+    'SPERMAN': 4,
+    'LAID': 6,
     }
 
 if __name__ == '__main__':
@@ -41,4 +43,14 @@ if __name__ == '__main__':
 
     for Toon in toon_list:
         sis = SIS(title=Toon.title)
-        sis.scrap_pages(Toon, toon[Toon.title], new[Toon.title])
+        if toon[Toon.title] == new[Toon.title]:
+            pass
+        elif toon[Toon.title] != 0:
+            sis.scrap_pages(Toon, toon[Toon.title]+1, new[Toon.title])
+        else:
+            sis.scrap_pages(Toon, 1, new[Toon.title])
+
+    # update latest.txt
+    with open('latest.txt', 'w') as f:
+        for Toon in toon_list:
+            f.write(f"{Toon.title} {new[Toon.title]}\n")

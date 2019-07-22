@@ -5,6 +5,7 @@ from bs4 import BeautifulSoup as BS
 N_PARSING_STR = '.wt_viewer img'
 D_PARSING_STR = ''
 
+
 class PageLoader:
     def __init__(self, dir_name='default', url=None, extension='jpg'):
         self.url = url
@@ -14,7 +15,7 @@ class PageLoader:
         self.headers = {
         'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36'}
         # 쿠키 추가하면 됨.
-
+        self.cookies = 1
         
     def set_dir_name(self, dir_name):
         self.dir_name = dir_name
@@ -27,6 +28,13 @@ class PageLoader:
 
     def set_extension(self, extension):
         self.extension = extension
+
+    def set_cookies(self, cookies):
+        self.cookies = cookies
+        self.headers.update({'cookies': self.cookies})
+
+    def del_cookies(self):
+        del self.headers['cookies']
 
     def scrap_page(self, url=None):
         os.makedirs(self.dir_name, exist_ok=True)
@@ -56,20 +64,31 @@ class SIS:
         self.page_loader = PageLoader(dir_name=title)
         self.title = title
 
-    def episode_check(self):
-        # txt파일로 몇화인지 기록해 놓은 후 업데이트에 활용
-        pass
 
     def dir_exist(self, dir_name):
         # dir이름이 존재하는지 boolean으로 알려주는 method
         pass
 
     # N company case
-    def scrap_pages(self, ToonModel, start, end):
+    def scrap_pages(self, ToonModel, start, end, **kwargs):
         os.makedirs(self.title, exist_ok=True)
         os.chdir(self.title)
 
-        for i in range(start, end+1):
-            self.page_loader.set_dir_name(f'ep{i}')
-            url = ToonModel.page_url(i)
-            self.page_loader.scrap_page(url)
+        if ToonModel.rate < 18:
+            for i in range(start, end+1):
+                self.page_loader.set_dir_name(f'ep{i}')
+                url = ToonModel.page_url(i)
+                self.page_loader.scrap_page(url)
+        else:
+            if self.page_loader.cookies:
+                if self.page_loader.cookies == 1:
+                    self.page_loader.set_cookies(kwargs['cookies'])
+                for i in range(start, end + 1):
+                    self.page_loader.set_dir_name(f'ep{i}')
+                    url = ToonModel.page_url(i)
+                    self.page_loader.scrap_page(url)
+                self.page_loader.del_cookies()
+            else:
+                pass
+
+        os.chdir('..')

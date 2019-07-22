@@ -7,9 +7,10 @@ class WebToon:
         self.weekday = weekday
 
 class NWToon(WebToon):
-    def __init__(self, title, Id, weekday):
+    def __init__(self, title, Id, weekday, rate=0):
         super().__init__(title, Id, weekday)
         self.url = f'https://comic.naver.com/webtoon/detail.nhn?titleId={self.id}&weekday={self.weekday}&no='
+        self.rate = rate
 
     def page_url(self, no=1):
         return self.url+str(no)
@@ -23,6 +24,7 @@ JAMESONHILL = NWToon('JAMESONHILL', 671421, 'wed')
 PINK = NWToon('PINK', 715159, 'sat')
 MAGICSCROLL = NWToon('MAGICSCROLL', 655746, 'sun')
 KILLERFOODS = NWToon('KILLERFOODS', 720117, 'sun')
-SPERMAN = NWToon('SPERMAN', 730259, 'sun')
+SPERMAN = NWToon('SPERMAN', 730259, 'sun', 18)
+LAID = NWToon('LAID', 729039, 'mon')
 
-toon_list = [COUNTRIES3, TOWER, WINDBREAKER, COOKGO, JAMESONHILL, PINK, MAGICSCROLL, KILLERFOODS, SPERMAN]
+toon_list = [COUNTRIES3, TOWER, WINDBREAKER, COOKGO, JAMESONHILL, PINK, MAGICSCROLL, KILLERFOODS, SPERMAN, LAID]
