@@ -25,30 +25,32 @@ while True:
         break
 
 new = {
-    'COUNTRIES3': 124,
-    'TOWER': 439,
-    'WINDBREAKER': 268,
-    'COOKGO': 58,
-    'JAMESONHILL': 184,
-    'PINK': 49,
-    'MAGICSCROLL': 198,
-    'KILLERFOODS': 34,
-    'SPERMAN': 4,
-    'LAID': 6,
+    'COUNTRIES3': 129,
+    'TOWER': 441,
+    'WINDBREAKER': 270,
+    'COOKGO': 60,
+    'JAMESONHILL': 187,
+    'PINK': 52,
+    'MAGICSCROLL': 201,
+    'KILLERFOODS': 37,
+    'SPERMAN': 7,
+    'LAID': 8,
     }
 
 if __name__ == '__main__':
     print(toon)
     print(new)
+    cookie = ''
+    # cookie = 
 
     for Toon in toon_list:
         sis = SIS(title=Toon.title)
         if toon[Toon.title] == new[Toon.title]:
             pass
         elif toon[Toon.title] != 0:
-            sis.scrap_pages(Toon, toon[Toon.title]+1, new[Toon.title])
+            sis.scrap_pages(Toon, toon[Toon.title]+1, new[Toon.title], cookie=cookie)
         else:
-            sis.scrap_pages(Toon, 1, new[Toon.title])
+            sis.scrap_pages(Toon, 1, new[Toon.title], cookie=cookie)
 
     # update latest.txt
     with open('latest.txt', 'w') as f:

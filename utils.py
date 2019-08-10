@@ -3,8 +3,6 @@ import os
 from bs4 import BeautifulSoup as BS
 
 N_PARSING_STR = '.wt_viewer img'
-D_PARSING_STR = ''
-
 
 class PageLoader:
     def __init__(self, dir_name='default', url=None, extension='jpg'):
@@ -31,10 +29,10 @@ class PageLoader:
 
     def set_cookies(self, cookies):
         self.cookies = cookies
-        self.headers.update({'cookies': self.cookies})
+        self.headers.update({'cookie': self.cookies})
 
     def del_cookies(self):
-        del self.headers['cookies']
+        del self.headers['cookie']
 
     def scrap_page(self, url=None):
         os.makedirs(self.dir_name, exist_ok=True)
@@ -82,7 +80,7 @@ class SIS:
         else:
             if self.page_loader.cookies:
                 if self.page_loader.cookies == 1:
-                    self.page_loader.set_cookies(kwargs['cookies'])
+                    self.page_loader.set_cookies(kwargs['cookie'])
                 for i in range(start, end + 1):
                     self.page_loader.set_dir_name(f'ep{i}')
                     url = ToonModel.page_url(i)
@@ -92,3 +90,28 @@ class SIS:
                 pass
 
         os.chdir('..')
+
+    def scrap_id_base_pages(self, ToonModel, id_list, start_number=1, **kwargs):
+        os.makedirs(self.title, exist_ok=True)
+        os.chdir(self.title)
+
+        number = start_number
+        if ToonModel.rate < 18:
+            for Id in id_list:
+                self.page_loader.set_dir_name(f'ep{number}')
+                url = ToonModel.page_url(Id)
+                self.page_loader.scrap_page(url)
+                number += 1
+        else:
+            if self.page_loader.cookies:
+                if self.page_loader.cookies == 1:
+                    self.page_loader.set_cookies(kwargs['cookies'])
+                for Id in id_list:
+                    self.page_loader.set_dir_name(f'e[{number}')
+                    url = ToonModel.page_url(Id)
+                    self.page_loader.scrap_page(url)
+                self.page_loader.del_cookies()
+            else:
+                pass
+        os.chdir('..')
+

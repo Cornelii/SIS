@@ -16,6 +16,7 @@ class NWToon(WebToon):
         return self.url+str(no)
 
 
+
 COUNTRIES3 = NWToon('COUNTRIES3', 711422, 'tue')
 TOWER = NWToon('TOWER', 183559, 'mon')
 WINDBREAKER = NWToon('WINDBREAKER', 602910, 'mon')
