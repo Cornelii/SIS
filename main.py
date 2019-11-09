@@ -27,24 +27,24 @@ while True:
         break
 
 new = {
-    'COUNTRIES3': 144,
-    'TOWER': 449,
-    'WINDBREAKER': 278,
-    'COOKGO': 68,
-    'JAMESONHILL': 195,
-    'PINK': 58,
-    'MAGICSCROLL': 208,
-    'KILLERFOODS': 44,
-    'SPERMAN': 14,
-    'JANGBODYGUARD': 20,
+    'COUNTRIES3': 155,
+    'TOWER': 454,
+    'WINDBREAKER': 283,
+    'COOKGO': 73,
+    'JAMESONHILL': 200,
+    'PINK': 64,
+    'MAGICSCROLL': 213,
+    'KILLERFOODS': 49,
+    'SPERMAN': 19,
+    'JANGBODYGUARD': 25,
     'DOCTORNDOCTOR': 11,
-    'MANMULL': 14,
+    'MANMULL': 19,
     }
 
 if __name__ == '__main__':
     print(toon)
     print(new)
-    cookie ="NNB=2WI6OOJLEOIF2; nx_ssl=2; nid_inf=1085230822; NID_AUT=2Wg7tzA8SoYkSZ5C10H2nv/sPgSKKqp+dM2LIhUIyhQq/RxbkjcDszAlSJbeTsRB; NID_SES=AAABskCnayGXn2gAIjARLvHgGU1bpi5O4dA+D6gZQYPdWZCw7yXLxBrDUUcbXmBXMGOeDXY+Qwm22IPMmHhTyz6ZXjPB+UvRpzgaxIw7H6c3LGmegrFzNnEByVrFNwmsj8+pfggdnPEanQSjBlAXWNFzlfmUsx+wvRM4p7D09w6hE7Nf0h8ImcRv4lQZa0iQHIstnFVCzP3vKzbNuG317PEtGrReJf/oSobyZDMhUx7LdtZRJ6tPv0oLK4/arvJrL83Udj7XN5bP7uHmkTfKToG9pP+XxhlfRbndsNIMwgx8ypiC22+hz9HupXtz0wp086pkB0Dp1MNnlgXpSATsfetUG3Pnm54qrtrOFRfCTrqWnocnRiUtX3m0RAZljYQU8E4fQtZLPLj5b+Bb9uxy1KoxCRUvPgl9y3mOJSJqE2wbLZ5N6351NH3r18uqI4+bbobHe84P4pPKw9/du/S+pFUFPfBJ+aKztfzDOQNHi4rcazAtqNU9q6AgQaEnPBdIZ3Aw9kcLBhzrlXReIDuA5WntE80grBdblnj4wqemTVOTvw2UdepiijHb0FEXIeRVACKWo1osGpxFUr0ILtxNb7pjLCU=; NID_JKL=x4HxnbioRl1Jlay5NoqNLp1IIFowDgC5bRO+B6ncz3Q=; increase=""; JSESSIONID=31DA047B0F69BB36C3478B1320DB5C84"
+    cookie ="NNB=WY6EUAV6FKVV2; nx_ssl=2; ASID=0e25eebf0000016de4cfe9c800000053; nid_inf=1133345442; NID_AUT=WDhpbggOAqyEO+vgZe0/ToPkjsf8JtjFotAeDXJQ4gz0WIO1ZWUQDimzrFr/Ntcn; NID_SES=AAABs/xHrXrGQ/71N4jPuyEj9OD8VDahgWXzHf3tbfeqez+oewN+VzFXMV8YAtPOEMSe2NEAHcNnYfYbWoeccRxBf4llEINUyiaQ+xacjdagcpSmbhubY7ZlF2+SSHOOQLva+u2n3ZnzszUolSjN85fDKVlDmub/hglaqeVXmRtenvkrH3L5XPkn6iOXWHPoaS7Ug4G5POxpcBu5wsnbx+x65wVRJjRgJ8LXmZ8q7Mfpa6gl75hTnFx7lIXq3fgcqW5HTs6z+G5bef78Bgs9no9WQmHxFU9ZMSNBVfiaA8RbJHNsDc0TCbmetAYcfArtQvDhuLd+0xvG9ttUKavb3fmgiMScQwMplnKqEUaFjlakQfizDvxuiJ/u8pMMSTLboyt1nuY/tGY7F2P9x5ma/z8z7AjjSAmKg2qJ7hNsI33lSv6KhHmE5UONlWXTjpZEEcQdITsZtsaQQrlI5F+9HqNhEi9MKJuoL023xyNBvtxj2FgqDpOesEg9/qoauvgvw4wh7ivmbThJEp9yrSWZ1XeAg5KhHkx8sbgouXsPvhpmgBRaOZ/2hDljnbsYOetnIhO0VUb5e/vVaavEXCb87A7AtVM=; NID_JKL=MIjx6IcdHB8OUR84wchqIAWTQhG3gm+JlML4QJfogRk=; JSESSIONID=013CEDC5AA19A9A2F8FF07242A1647E5"
     # cookie = 
 
     for Toon in toon_list:

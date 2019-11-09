@@ -1,5 +1,4 @@
 
-
 class WebToon:
     def __init__(self, title, Id, weekday):
         self.title = title
