@@ -1,4 +1,6 @@
+from utils import PageLoader
 
+# ToonModel 을 Json Serializable하게 구성하고 JSON으로 version 관리
 class Toon:
     def __init__(self, title, version_size=300):
         self.title = title
@@ -21,6 +23,7 @@ class NWToon(Toon):
     def page_url(self, no=1):
         return self.url+str(no)
 
+    ## Decorator 방식으로 변경해보기
     def generate_url(self, start, end):
         def generator():
             for i in range(start, end+1):
@@ -46,3 +49,27 @@ n_toon_list = [COUNTRIES3, TOWER, WINDBREAKER, COOKGO, JAMESONHILL,
                 PINK, MAGICSCROLL, KILLERFOODS, SPERMAN, JANGBODYGUARD,
                 DOCTORNDOCTOR, MANMULL]
 
+
+class IGToon(Toon):
+
+    def __init__(self, title, list_url, parse_str=".post-wrapper p a", base_url="https://eguru.tumblr.com", version_size=300):
+        super().__init__(title, version_size)
+        self.list_url = list_url
+        self.parse_str = parse_str
+        self.base_url = base_url
+        self.rate = 0
+
+    def generate_url(self):
+        PL = PageLoader()
+        urls = PL.get_list(self.list_url, self.parse_str)
+
+        def generator():
+            for url in urls:
+                yield url["href"][-47:], self.base_url + url["href"]
+
+        self.url_generator = generator
+
+
+SLAMDUNK = IGToon("Slam Dunk", "https://eguru.tumblr.com/%EC%8A%AC%EB%9E%A8%EB%8D%A9%ED%81%AC")
+NARUTO = IGToon("Naruto", "https://eguru.tumblr.com/%EB%82%98%EB%A3%A8%ED%86%A0")
+ONEPIECE = IGToon("ONEPIECE", "https://eguru.tumblr.com/one-piece")

@@ -3,7 +3,7 @@ import os
 from bs4 import BeautifulSoup as BS
 
 N_PARSING_STR = '.wt_viewer img'
-
+IG_PARSING_STR = '.body-text p img'
 
 class PageLoader:
     def __init__(self, dir_name='default', url=None, extension='jpg'):
@@ -35,19 +35,28 @@ class PageLoader:
     def del_cookies(self):
         del self.headers['cookie']
 
-    def scrap_page(self, url=None):
+    def scrap_page(self, _parse_str=None, _attr=None, url=None):
         os.makedirs(self.dir_name, exist_ok=True)
         if url:
             base_url = url
         else:
             base_url = self.url
+        if _parse_str:
+            parse_str = _parse_str
+        else:
+            parse_str = self.parsing_str
+        if _attr:
+            attr = _attr
+        else:
+            attr = 'src'
+
         res = requests.get(base_url, headers=self.headers)
         soup = BS(res.text, 'html.parser')
-        target_images = soup.select(self.parsing_str)
+        target_images = soup.select(parse_str)
 
         for i in range(len(target_images)):
             with open(f'{self.dir_name}/{i}.{self.extension}', 'wb') as f:
-                imgs = requests.get(target_images[i]['src'], stream=True, headers=self.headers)
+                imgs = requests.get(target_images[i][attr], stream=True, headers=self.headers)
                 print(i, imgs.status_code)
                 if imgs.status_code == 200:
                     f.write(imgs.raw.read())
@@ -81,6 +90,20 @@ class SIS:
         for episode, url in ToonModel.url_generator():
             self.page_loader.set_dir_name(f'ep{episode}')
             self.page_loader.scrap_page(url)
+
+        os.chdir('..')
+
+    def scrap_pages_with_parse(self, ToonModel, parse_str, attr, **kwargs):
+        os.makedirs(self.title, exist_ok=True)
+        os.chdir(self.title)
+
+        if ToonModel.rate >= 18:
+            if self.page_loader.cookies == 1:
+                self.page_loader.set_cookies(kwargs['cookie'])
+
+        for episode, url in ToonModel.url_generator():
+            self.page_loader.set_dir_name(f'ep{episode}')
+            self.page_loader.scrap_page(parse_str, attr, url)
 
         os.chdir('..')
 
