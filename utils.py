@@ -89,7 +89,7 @@ class SIS:
 
         for episode, url in ToonModel.url_generator():
             self.page_loader.set_dir_name(f'ep{episode}')
-            self.page_loader.scrap_page(url)
+            self.page_loader.scrap_page(url=url)
 
         os.chdir('..')
 
