@@ -8,6 +8,8 @@
 
 .ipynb_checkpoints
 */.ipynb_checkpoints/*
+*.exe
+tk_main.py
 
 # Remove previous ipynb_checkpoints
 #   git rm -r .ipynb_checkpoints/
@@ -23,6 +25,8 @@
 .idea/**/usage.statistics.xml
 .idea/**/dictionaries
 .idea/**/shelf
+
+s_models.py
 
 # Generated files
 .idea/**/contentModel.xml

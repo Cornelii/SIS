@@ -10,7 +10,6 @@ COOKGO = NWToon(703849, 'mon')
 JAMESONHILL = NWToon(671421, 'wed')
 PINK = NWToon(715159, 'sat')
 MAGICSCROLL = NWToon(655746, 'sun')
-KILLERFOODS = NWToon(720117, 'sun')
 SPERMAN = NWToon(730259, 'sun')
 MANMULL=NWToon("MANMULL", 729964, 'thu')
 GUARD=NWToon("JANGBODYGUARD",728750,'mon')
@@ -18,18 +17,17 @@ DOCTORNDOCTOR=NWToon("DOCTORNDOCTOR",732955,'sun')
 '''
 
 new = {
-    'COUNTRIES3': 161,
-    'TOWER': 457,
-    'WINDBREAKER': 286,
-    'COOKGO': 76,
-    'JAMESONHILL': 203,
-    'PINK': 67,
-    'MAGICSCROLL': 217,
-    'KILLERFOODS': 53,
-    'SPERMAN': 23,
-    'JANGBODYGUARD': 28,
-    'DOCTORNDOCTOR': 28,
-    'MANMULL': 22,
+    'COUNTRIES3': 181,
+    'TOWER': 467,
+    'WINDBREAKER': 296,
+    'COOKGO': 86,
+    'JAMESONHILL': 213,
+    'PINK': 77,
+    'MAGICSCROLL': 227,
+    'SPERMAN': 33,
+    'JANGBODYGUARD': 38,
+    'DOCTORNDOCTOR': 48,
+    'MANMULL': 32,
     }
 
 # Toon Model => Toon을 상속하고, self.url_generator = generator 시키는 제너레이터 레퍼 펑션 generate_url 상속
@@ -68,4 +66,4 @@ if __name__ == '__main__':
         
     with open('latest.txt', 'w') as f:
         for key, value in new.items():
-            f.write(f"{key} {value}")
+            f.write(f"{key} {value}\n")

@@ -1,6 +1,8 @@
 import requests
 import os
 from bs4 import BeautifulSoup as BS
+from selenium import webdriver
+import time
 
 N_PARSING_STR = '.wt_viewer img'
 IG_PARSING_STR = '.body-text p img'

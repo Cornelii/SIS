@@ -39,14 +39,13 @@ COOKGO = NWToon('COOKGO', 703849, 'mon')
 JAMESONHILL = NWToon('JAMESONHILL', 671421, 'wed')
 PINK = NWToon('PINK', 715159, 'sat')
 MAGICSCROLL = NWToon('MAGICSCROLL', 655746, 'sun')
-KILLERFOODS = NWToon('KILLERFOODS', 720117, 'sun')
 SPERMAN = NWToon('SPERMAN', 730259, 'sun', 18)
 JANGBODYGUARD=NWToon("JANGBODYGUARD", 728750,'mon')
 DOCTORNDOCTOR=NWToon("DOCTORNDOCTOR", 732955,'sun')
 MANMULL=NWToon("MANMULL", 729964, 'thu')
 
 n_toon_list = [COUNTRIES3, TOWER, WINDBREAKER, COOKGO, JAMESONHILL,
-                PINK, MAGICSCROLL, KILLERFOODS, SPERMAN, JANGBODYGUARD,
+                PINK, MAGICSCROLL, SPERMAN, JANGBODYGUARD,
                 DOCTORNDOCTOR, MANMULL]
 
 
@@ -73,3 +72,6 @@ class IGToon(Toon):
 SLAMDUNK = IGToon("Slam Dunk", "https://eguru.tumblr.com/%EC%8A%AC%EB%9E%A8%EB%8D%A9%ED%81%AC")
 NARUTO = IGToon("Naruto", "https://eguru.tumblr.com/%EB%82%98%EB%A3%A8%ED%86%A0")
 ONEPIECE = IGToon("ONEPIECE", "https://eguru.tumblr.com/one-piece")
+
+
+
